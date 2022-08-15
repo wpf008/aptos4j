@@ -49,5 +49,10 @@ public class AptosApiClientImpl implements AptosApiClient {
         return aptosApiConfig.executeSync(aptosApiService.submitTransaction(request));
     }
 
+    @Override
+    public List<Transaction> getTransactionsByAddress(String address, Integer start, Integer limit) {
+        return aptosApiConfig.executeSync(aptosApiService.getTransactionsByAddress(address, start, limit));
+    }
+
 
 }

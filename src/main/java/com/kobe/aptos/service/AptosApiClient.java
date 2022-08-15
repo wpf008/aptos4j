@@ -13,6 +13,10 @@ public interface AptosApiClient {
 
     List<Transaction> getTransactions(Integer start, Integer limit);
 
-    SubmitTransaction submitTransaction( TransactionRequest request);
+    SubmitTransaction submitTransaction(TransactionRequest request);
+
+
+    List<Transaction> getTransactionsByAddress(String address, Integer start, Integer limit);
+
 
 }

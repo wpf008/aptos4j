@@ -11,10 +11,14 @@ public class Examples {
 
     public static void main(String[] args) {
         AptosApiClient client = new AptosApiClientImpl();
+//        LedgerInformation ledgerInformation = client.ledgerInformation();
+//        List<Transaction> transactions = client.getTransactions(1, 10);
 
-        LedgerInformation ledgerInformation = client.ledgerInformation();
+        List<Transaction> transactionsByAddress
+                = client.getTransactionsByAddress("0x5c96ae24729caa96958df32f0c8ca715494d738e943b14961541e477b133ea9c", 1, 10);
 
-
-        List<Transaction> transactions = client.getTransactions(1, 10);
+        for (Transaction transaction : transactionsByAddress) {
+            System.out.println(transaction);
+        }
     }
 }
