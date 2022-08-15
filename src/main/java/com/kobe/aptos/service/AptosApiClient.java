@@ -1,7 +1,19 @@
 package com.kobe.aptos.service;
 
-import retrofit2.Call;
+
+import com.kobe.aptos.model.LedgerInformation;
+import com.kobe.aptos.model.transaction.SubmitTransaction;
+import com.kobe.aptos.model.transaction.Transaction;
+import com.kobe.aptos.request.transaction.TransactionRequest;
+import retrofit2.http.Body;
+
+import java.util.List;
 
 public interface AptosApiClient {
-    Call<String> ledgerInformation();
+    LedgerInformation ledgerInformation();
+
+    List<Transaction> getTransactions(Integer limit, Integer start);
+
+    SubmitTransaction submitTransaction( TransactionRequest request);
+
 }

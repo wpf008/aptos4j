@@ -1,9 +1,11 @@
 package com.kobe.aptos.model.transaction;
+import lombok.Data;
+
 import java.util.List;
 
 
-@lombok.Data
-public class Data {
+@Data
+public class TxData {
     private String epoch;
     private List<String> failedProposerIndices;
     private String height;

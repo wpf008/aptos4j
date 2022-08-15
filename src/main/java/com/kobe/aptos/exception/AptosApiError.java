@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CoinGeckoApiError {
+public class AptosApiError {
     @JsonProperty("code")
     private int code;
     @JsonProperty("error")

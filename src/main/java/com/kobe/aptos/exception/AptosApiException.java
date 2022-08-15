@@ -1,24 +1,23 @@
-package com.litesoftwares.coingecko.exception;
+package com.kobe.aptos.exception;
 
-import com.litesoftwares.coingecko.CoinGeckoApiError;
 
-public class CoinGeckoApiException extends RuntimeException {
+public class AptosApiException extends RuntimeException {
     private final static long serialVersionUID = -4298738252483677889L;
-    private CoinGeckoApiError error;
+    private AptosApiError error;
 
-    public CoinGeckoApiException(CoinGeckoApiError error) {
+    public AptosApiException(AptosApiError error) {
         this.error = error;
     }
 
-    public CoinGeckoApiException(Throwable cause) {
+    public AptosApiException(Throwable cause) {
         super(cause);
     }
 
-    public CoinGeckoApiException(String message, Throwable cause) {
+    public AptosApiException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public CoinGeckoApiError getError() {
+    public AptosApiError getError() {
         return error;
     }
 
