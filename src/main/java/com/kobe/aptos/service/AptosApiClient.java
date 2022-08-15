@@ -12,7 +12,7 @@ import java.util.List;
 public interface AptosApiClient {
     LedgerInformation ledgerInformation();
 
-    List<Transaction> getTransactions(Integer limit, Integer start);
+    List<Transaction> getTransactions(Integer start, Integer limit);
 
     SubmitTransaction submitTransaction( TransactionRequest request);
 

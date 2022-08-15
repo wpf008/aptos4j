@@ -40,8 +40,8 @@ public class AptosApiClientImpl implements AptosApiClient {
     }
 
     @Override
-    public List<Transaction> getTransactions(Integer limit, Integer start) {
-        return aptosApiConfig.executeSync(aptosApiService.getTransactions(limit, start));
+    public List<Transaction> getTransactions(Integer start, Integer limit) {
+        return aptosApiConfig.executeSync(aptosApiService.getTransactions(start, limit));
     }
 
     @Override
