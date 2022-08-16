@@ -2,6 +2,9 @@ package com.kobe.aptos.service.impl;
 
 import com.kobe.aptos.config.AptosApiConfig;
 import com.kobe.aptos.model.LedgerInformation;
+import com.kobe.aptos.model.account.Account;
+import com.kobe.aptos.model.account.module.Module;
+import com.kobe.aptos.model.account.resource.Resource;
 import com.kobe.aptos.model.transaction.SigningMessage;
 import com.kobe.aptos.model.transaction.SubmitTransaction;
 import com.kobe.aptos.model.transaction.Transaction;
@@ -63,6 +66,31 @@ public class AptosApiClientImpl implements AptosApiClient {
     @Override
     public SigningMessage signingMessage(TransactionRequest request) {
         return aptosApiConfig.executeSync(aptosApiService.signingMessage(request));
+    }
+
+    @Override
+    public Account account(String address) {
+        return aptosApiConfig.executeSync(aptosApiService.account(address));
+    }
+
+    @Override
+    public List<Resource> getResources(String address,String version) {
+        return aptosApiConfig.executeSync(aptosApiService.getResources(address,version));
+    }
+
+    @Override
+    public Resource getResourcesByType(String address, String resourceType, String version) {
+        return aptosApiConfig.executeSync(aptosApiService.getResourcesByType(address, resourceType, version));
+    }
+
+    @Override
+    public List<Module> getModules(String address, String version) {
+        return aptosApiConfig.executeSync(aptosApiService.getModules(address, version));
+    }
+
+    @Override
+    public Module getModulesByModuleName(String address, String moduleName, String version) {
+        return aptosApiConfig.executeSync(aptosApiService.getModulesByModuleName(address, moduleName, version));
     }
 
 

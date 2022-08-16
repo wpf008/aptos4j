@@ -2,6 +2,9 @@ package com.kobe.aptos.service;
 
 
 import com.kobe.aptos.model.LedgerInformation;
+import com.kobe.aptos.model.account.Account;
+import com.kobe.aptos.model.account.module.Module;
+import com.kobe.aptos.model.account.resource.Resource;
 import com.kobe.aptos.model.transaction.SigningMessage;
 import com.kobe.aptos.model.transaction.SubmitTransaction;
 import com.kobe.aptos.model.transaction.Transaction;
@@ -25,6 +28,16 @@ public interface AptosApiClient {
     Transaction getTransactionsByVersion(String version);
 
     SigningMessage signingMessage(TransactionRequest request);
+
+    Account account(String address);
+
+    List<Resource> getResources(String address,String version);
+
+    Resource getResourcesByType(String address, String resourceType, String version);
+
+    List<Module> getModules(String address, String version);
+
+    Module getModulesByModuleName(String address, String moduleName, String version);
 
 
 }

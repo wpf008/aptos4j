@@ -1,7 +1,9 @@
 package com.kobe.aptos.examples;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.kobe.aptos.model.LedgerInformation;
+import com.kobe.aptos.model.account.Account;
+import com.kobe.aptos.model.account.module.Module;
+import com.kobe.aptos.model.account.resource.Resource;
 import com.kobe.aptos.model.transaction.SubmitTransaction;
 import com.kobe.aptos.model.transaction.Transaction;
 import com.kobe.aptos.request.transaction.Payload;
@@ -17,7 +19,8 @@ public class Examples {
     private static AptosApiClient client = new AptosApiClientImpl();
 
     public static void main(String[] args) {
-        ledgerInformation();
+//        ledgerInformation();
+        getModules();
     }
 
 
@@ -28,7 +31,9 @@ public class Examples {
 
     private static void getTransactions() {
         List<Transaction> transactions = client.getTransactions(1, 10);
-
+        for (Transaction transaction : transactions) {
+            System.out.println(transaction);
+        }
     }
 
 
@@ -66,4 +71,40 @@ public class Examples {
         SubmitTransaction submitTransaction = client.submitTransaction(transactionRequest);
         System.out.println(submitTransaction);
     }
+
+
+    private static void account() {
+        Account account = client.account("0x5c96ae24729caa96958df32f0c8ca715494d738e943b14961541e477b133ea9c");
+        System.out.println(account);
+    }
+
+
+    private static void getResources() {
+        //List<Resource> resources = client.getResources("0x5c96ae24729caa96958df32f0c8ca715494d738e943b14961541e477b133ea9c", null);
+        List<Resource> resources = client.getResources("0x5c96ae24729caa96958df32f0c8ca715494d738e943b14961541e477b133ea9c", "16439623");
+        for (Resource resource : resources) {
+            System.out.println(resource);
+        }
+    }
+
+
+    private static void getResourcesByType() {
+        Resource resource = client.getResourcesByType("0x5c96ae24729caa96958df32f0c8ca715494d738e943b14961541e477b133ea9c", "0x1::account::Account", null);
+        System.out.println(resource);
+    }
+
+
+    private static void getModules() {
+        List<Module> modules = client.getModules("0x1", null);
+        for (Module module : modules) {
+            System.out.println(module);
+        }
+    }
+
+    private static void getModulesByModuleName() {
+        Module module = client.getModulesByModuleName("0x1", "bcs",null);
+        System.out.println(module);
+    }
+
+
 }
