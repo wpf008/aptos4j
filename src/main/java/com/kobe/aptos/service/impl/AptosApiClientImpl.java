@@ -2,6 +2,7 @@ package com.kobe.aptos.service.impl;
 
 import com.kobe.aptos.config.AptosApiConfig;
 import com.kobe.aptos.model.LedgerInformation;
+import com.kobe.aptos.model.transaction.SigningMessage;
 import com.kobe.aptos.model.transaction.SubmitTransaction;
 import com.kobe.aptos.model.transaction.Transaction;
 import com.kobe.aptos.request.transaction.TransactionRequest;
@@ -26,12 +27,7 @@ public class AptosApiClientImpl implements AptosApiClient {
 
     public AptosApiClientImpl(Long connectionTimeoutSeconds, Long readTimeoutSeconds, Long writeTimeoutSeconds) {
         this.aptosApiConfig = new AptosApiConfig();
-        this.aptosApiService = aptosApiConfig.createService(
-                AptosApiService.class,
-                connectionTimeoutSeconds,
-                readTimeoutSeconds,
-                writeTimeoutSeconds
-        );
+        this.aptosApiService = aptosApiConfig.createService(AptosApiService.class, connectionTimeoutSeconds, readTimeoutSeconds, writeTimeoutSeconds);
     }
 
     @Override
@@ -52,6 +48,21 @@ public class AptosApiClientImpl implements AptosApiClient {
     @Override
     public List<Transaction> getTransactionsByAddress(String address, Integer start, Integer limit) {
         return aptosApiConfig.executeSync(aptosApiService.getTransactionsByAddress(address, start, limit));
+    }
+
+    @Override
+    public Transaction getTransactionsByTxHash(String txHash) {
+        return aptosApiConfig.executeSync(aptosApiService.getTransactionsByTxHash(txHash));
+    }
+
+    @Override
+    public Transaction getTransactionsByVersion(String version) {
+        return aptosApiConfig.executeSync(aptosApiService.getTransactionsByVersion(version));
+    }
+
+    @Override
+    public SigningMessage signingMessage(TransactionRequest request) {
+        return aptosApiConfig.executeSync(aptosApiService.signingMessage(request));
     }
 
 
