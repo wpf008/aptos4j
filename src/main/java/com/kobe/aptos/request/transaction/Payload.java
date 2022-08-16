@@ -1,4 +1,5 @@
 package com.kobe.aptos.request.transaction;
+
 import lombok.Data;
 
 import java.util.List;
@@ -10,4 +11,5 @@ public class Payload {
     private String function;
     private List<String> typeArguments;
     private List<String> arguments;
+    private List<String> secondarySigners;
 }

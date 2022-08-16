@@ -6,7 +6,6 @@ import com.kobe.aptos.model.transaction.SigningMessage;
 import com.kobe.aptos.model.transaction.SubmitTransaction;
 import com.kobe.aptos.model.transaction.Transaction;
 import com.kobe.aptos.request.transaction.TransactionRequest;
-import retrofit2.http.Body;
 
 import java.util.List;
 
